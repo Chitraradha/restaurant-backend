@@ -3,7 +3,12 @@ const restaurantModel=require("../model/restmodel")
 const router=express.Router()
 
 router.post("/add",async(req,res)=>{
-    res.send("hello")
+    let data=req.body
+    let restaurant=new restaurantModel(data)
+    let result=await restaurant.save()
+    res.json({
+        status:"success"
+    })
 })
 
 module.exports=router
